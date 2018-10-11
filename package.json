@@ -1,0 +1,21 @@
+{
+  "name": "simple_json_graphql",
+  "version": "0.0.1",
+  "description": "Simple GraphQL Server from JSON data",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start2": "nodemon --ext ts,yaml --exec 'ts-node' index2.ts",
+    "start": "nodemon --ext ts,yaml --exec 'ts-node' index.ts"
+  },
+  "author": "Hiroyuki OSAKI <hiroyuki.osaki@gmail.com> (https://github.com/onelittlenightmusic)",
+  "license": "ISC",
+  "dependencies": {
+    "graphql-yoga": "^1.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.1"
+  }
+}
