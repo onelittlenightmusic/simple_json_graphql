@@ -50,8 +50,19 @@ async function run() {
     },
   };
 
+  const formatResponse = (response:any) => {
+    var meta = {
+      data_origin: "Wikipedia",
+      source_url: "https://en.wikipedia.org/wiki/List_of_cities_in_Japan",
+      lisence_type: "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+    }
+    return {
+      ...response,
+      meta
+    }
+  }
 	const server = new GraphQLServer({ typeDefs, resolvers })
-	server.start({port: 4040}, () =>
+	server.start({port: 4040, formatResponse}, () =>
 		console.log(`Your GraphQL server is running now ...`),
 	)
 }
