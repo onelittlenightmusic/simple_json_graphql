@@ -32,7 +32,7 @@ async function run() {
       Density: Float
       # Founded date in format of yyyy-MM-dd (example: "1889-10-01"), String
       Founded: String
-      # Area (example: ), unit km^2, Float
+      # Area (example: 326.45), unit km^2, Float
       Area: Float
     }
     # The "Query" type is the root of all GraphQL queries.
