@@ -11,7 +11,11 @@
   "author": "Hiroyuki OSAKI <hiroyuki.osaki@gmail.com> (https://github.com/onelittlenightmusic)",
   "license": "ISC",
   "dependencies": {
-    "graphql-yoga": "^1.16.2"
+    "@types/request": "^2.47.1",
+    "@types/request-promise-native": "^1.0.15",
+    "graphql-yoga": "^1.16.2",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
     "nodemon": "^1.18.4",

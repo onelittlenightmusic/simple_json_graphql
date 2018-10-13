@@ -20,14 +20,20 @@ async function run() {
     # Comments in GraphQL are defined with the hash (#) symbol.
     # This "Book" type can be used in other type declarations.
     type Location {
-      #"City (Special Ward)": String
+      # Prefecture name written in Roman alphabet (example: "Fukushima", "Aichi"), String
       Prefecture: String
-      Population: Int
-      Country: String
-      Density: Int
-      Founded: String
+      # Japanese name of city written in Japanese Kanji character (example: "名古屋市"), String
       Japanese: String
-      #'City (Special Ward)': String
+      # Population (example: 2283289), Integer
+      Population: Int
+      # Country basically "Japan", String
+      Country: String
+      # Density (example: 6860), Integer
+      Density: Float
+      # Founded date in format of yyyy-MM-dd (example: "1889-10-01"), String
+      Founded: String
+      # Area (example: ), unit km^2, Float
+      Area: Float
     }
     # The "Query" type is the root of all GraphQL queries.
     # (A "Mutation" type will be covered later on.)
