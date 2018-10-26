@@ -1,6 +1,9 @@
 import { GraphQLServer } from 'graphql-yoga'
 import request from 'request-promise-native'
+import { config } from 'dotenv'
+config()
 
+const PORT = process.env.PORT
 var download = async function(url: string) {
   var body = await request.get({url});
   var cities = {}
@@ -17,8 +20,6 @@ async function run() {
     const locations = cities['data']
     console.log(locations)
 	const typeDefs = `
-    # Comments in GraphQL are defined with the hash (#) symbol.
-    # This "Book" type can be used in other type declarations.
     type Location {
       # Prefecture name written in Roman alphabet (example: "Fukushima", "Aichi"), String
       Prefecture: String
@@ -62,7 +63,7 @@ async function run() {
     }
   }
 	const server = new GraphQLServer({ typeDefs, resolvers })
-	server.start({port: 4040, formatResponse}, () =>
+	server.start({port: PORT, formatResponse}, () =>
 		console.log(`Your GraphQL server is running now ...`),
 	)
 }
