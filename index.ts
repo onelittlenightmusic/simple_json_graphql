@@ -1,26 +1,22 @@
 import { GraphQLServer } from 'graphql-yoga'
-import request from 'request-promise-native'
+import fetch from 'node-fetch'
 import { config } from 'dotenv'
 config()
 
 const PORT = process.env.PORT
 var download = async function(url: string) {
-  var body = await request.get({url});
-  var cities = {}
-  console.log(body)
-  if(typeof body == 'string') {
-       cities = JSON.parse(body)
-  }
-  return cities
+  var response = await fetch(url);
+  return (await response.json())
 }
 
 async function run() {
-    var cities: any = await download('https://gist.githubusercontent.com/onelittlenightmusic/0740ae9a64da0c867e0868926f97d5e2/raw/f3ac83bbe2334a2a9fce81154cab25a225ab5265/japancities.json')
+    var cities: any = await download('https://gist.githubusercontent.com/onelittlenightmusic/84fcbe3e8843b369c531866acd02977b/raw/japancities.json')
 
     const locations = cities['data']
-    console.log(locations)
 	const typeDefs = `
     type Location {
+      # Name
+      Name: String
       # Prefecture name written in Roman alphabet (example: "Fukushima", "Aichi"), String
       Prefecture: String
       # Japanese name of city written in Japanese Kanji character (example: "名古屋市"), String
@@ -35,6 +31,8 @@ async function run() {
       Founded: String
       # Area (example: 326.45), unit km^2, Float
       Area: Float
+      # Homepage
+      Homepage: String
     }
     # The "Query" type is the root of all GraphQL queries.
     # (A "Mutation" type will be covered later on.)
