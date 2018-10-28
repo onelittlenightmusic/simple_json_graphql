@@ -37,8 +37,8 @@ async function run() {
     # The "Query" type is the root of all GraphQL queries.
     # (A "Mutation" type will be covered later on.)
     type Query {
-      locations(name_in: [String]): [Location]
-      location(name: String!): Location
+      locations(Japanese_in: [String]): [Location]
+      location(Japanese: String!): Location
     }
   `;
 
@@ -46,14 +46,14 @@ async function run() {
     Query: {
       locations: (obj: any, param: any, context: any) => {
         if(param != null) {
-          var names = param.name_in
+          var names = param.Japanese_in
           if(names != null) {
             return locations.filter((element: any) => {return names.includes(element['Japanese'])})
           }
         }
         return locations
       },
-      location: (obj:any, param:any, context: any) => locations.find((element: any) => {return element.Japanese === param.name})
+      location: (obj:any, param:any, context: any) => locations.find((element: any) => {return element.Japanese === param.Japanese})
     },
   };
 
