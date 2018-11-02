@@ -37,7 +37,9 @@ async function run() {
     # The "Query" type is the root of all GraphQL queries.
     # (A "Mutation" type will be covered later on.)
     type Query {
+      # Get array of cities (Option: select by name array)
       locations(Japanese_in: [String]): [Location]
+      # Get one city by Japanese name
       location(Japanese: String!): Location
     }
   `;
