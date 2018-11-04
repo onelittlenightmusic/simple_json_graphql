@@ -5,8 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start2": "nodemon --ext ts,yaml --exec 'ts-node' index2.ts",
-    "startDev": "nodemon --ext ts,yaml --exec 'ts-node' index.ts",
+    "start2": "nodemon --ext ts,yaml,graphql --exec 'ts-node' index2.ts",
+    "startDev": "nodemon --ext ts,yaml,graphql --exec 'ts-node' index.ts",
     "start": "ts-node index.ts"
   },
   "author": "Hiroyuki OSAKI <hiroyuki.osaki@gmail.com> (https://github.com/onelittlenightmusic)",

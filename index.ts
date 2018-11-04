@@ -10,39 +10,10 @@ var download = async function(url: string) {
 }
 
 async function run() {
-    var cities: any = await download('https://gist.githubusercontent.com/onelittlenightmusic/84fcbe3e8843b369c531866acd02977b/raw/japancities.json')
+  var data: any = await download('https://gist.githubusercontent.com/onelittlenightmusic/84fcbe3e8843b369c531866acd02977b/raw/japancities.json')
 
-    const locations = cities['data']
-	const typeDefs = `
-    type Location {
-      # Name
-      Name: String
-      # Prefecture name written in Roman alphabet (example: "Fukushima", "Aichi"), String
-      Prefecture: String
-      # Japanese name of city written in Japanese Kanji character (example: "名古屋市"), String
-      Japanese: String
-      # Population (example: 2283289), Integer
-      Population: Int
-      # Country basically "Japan", String
-      Country: String
-      # Density (example: 6860), Integer
-      Density: Float
-      # Founded date in format of yyyy-MM-dd (example: "1889-10-01"), String
-      Founded: String
-      # Area (example: 326.45), unit km^2, Float
-      Area: Float
-      # Homepage
-      Homepage: String
-    }
-    # The "Query" type is the root of all GraphQL queries.
-    # (A "Mutation" type will be covered later on.)
-    type Query {
-      # Get array of cities (Option: select by name array)
-      locations(Japanese_in: [String]): [Location]
-      # Get one city by Japanese name
-      location(Japanese: String!): Location
-    }
-  `;
+  const locations = data['data']
+	const typeDefs = 'schema.graphql';
 
   const resolvers = {
     Query: {
