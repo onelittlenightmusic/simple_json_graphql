@@ -21,7 +21,8 @@ async function run() {
         if(param != null) {
           var names = param.Japanese_in
           if(names != null) {
-            return locations.filter((element: any) => {return names.includes(element['Japanese'])})
+            // return locations.filter((element: any) => {return names.includes(element['Japanese'])})
+            return names.map((name: any) => locations.find((e: any) => e['Japanese'] === name))
           }
         }
         return locations
